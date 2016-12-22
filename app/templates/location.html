@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Cusine Bar</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../static/assets/css/main_bda.css" />
+		
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    
+	</head>
+	<body class="left-sidebar">
+
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="homepage" id="logo">Cooked to Location</a></h1>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li class="current"><a href="homepage">Home</a></li>
+								<li><a href="location">Location</a></li>
+								<li><a href="cuisine">Cuisine</a></li>
+								<li><a href="rating">Rating</a></li>
+								<li><a href="contact">Contact</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<div class="row 200%">
+							<div class="4u 12u(mobile)" id="sidebar">
+								<hr class="first" />
+								<a class="image fit"><img src="../static/images/logo1.png" style="width: 100px;height: 100px" alt="" /></a>
+								<section>
+									<header>
+									<p></p>
+										<h3><a href="#">Choose Cuisine Type</a></h3>
+									</header>
+
+
+									<div>
+										<form action="/location/recommend2" method='POST'>
+
+										<p>
+
+											Want to know where is the best location to open a restaurant with specific cuisine type? We help you locate the best place for your own restaurant.
+
+										</p>
+
+											<select name="foodtype" id="blue">
+											<option selected disabled>Choose one...</option>
+											  <optgroup label="By Country">
+											    <option>French</option>
+											    <option>American</option>
+											    <option>Italian</option>
+											    <option>Mexican</option>
+											    <option>Chinese</option>
+											    <option>Japanese</option>
+											    <option>Thai</option>
+											    <option>Indian</option>
+											    <option>Korean</option>
+											  </optgroup>
+											  
+											  <optgroup label="By Food Type">
+											    <option>Bars</option>
+											    <option>Fast Food</option>
+											    <option>Pizza</option>
+											    <option>Coffee & Tea</option>
+											    <option>Burgers</option>
+											    <option>Bakeries</option>
+											    <option>Ice Cream & Frozen Yogurt</option>
+											    <option>Desserts</option>
+											    <option>Delis</option>
+											    <option>Barbeque</option>
+											    <option>Steakhouses</option>
+
+											  </optgroup>
+											</select>
+
+											<p></p>
+
+											<p>
+
+
+												You can also find best place for your restaurant within certain loaction range. Just type in Zip code. If you want recommendation nationwide, please leave this column blank.   
+
+											</p>
+
+											<input type="text" id='myinput' class="form-control" name="zipcode" placeholder='Zip Code' value=''>
+											<p></p>
+											<input type="submit" value="Recommend" style="height:46px;width:180px;color:white">
+										</form>
+									</div>
+
+
+								</section>
+
+
+							</div>
+							<div class="8u 12u(mobile) important(mobile)" id="content">
+								<article id="main">
+									<header>
+										<h2><a href="#">Location Recommendation</a></h2>
+
+									</header>
+										<p>
+											
+										</p>
+
+									<div id="map" style="width: 100%;height: 500px"></div>
+
+								</article>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+
+								<!-- Contact -->
+									<section class="contact">
+										<ul class="icons">
+											<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+											<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+											<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+											<li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
+										</ul>
+									</section>
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; Big Data Analytics. All rights reserved.</li><li>Design: Jiayi Wang, Chenlu Ji, Sam Park. <a href="http://html5up.net">Github Link</a></li>
+										</ul>
+									</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="../static/assets/js/jquery.min.js"></script>
+			<script src="../static/assets/js/jquery.dropotron.min.js"></script>
+			<script src="../static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="../static/assets/js/jquery.onvisible.min.js"></script>
+			<script src="../static/assets/js/skel.min.js"></script>
+			<script src="../static/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../static/assets/js/main.js"></script>
+
+
+
+        	<script>
+      			function initMap() {
+
+        			var marker = null;
+        			var myLatlng = {lat: 40.807419, lng: -73.959998};
+        			var lat;
+        			var lng;
+
+        		// var SCRIPT_ROOT = {{ request.script_root }};
+
+					var map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 15,
+						disableDefaultUI: false,
+						center: myLatlng,
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+					});
+
+
+
+        		google.maps.event.addListener(map, "click", function(event) {
+          			lat = event.latLng.lat();
+          			lng = event.latLng.lng();
+          
+          			// alert("Lat=" + lat + "; Lng=" + lng);
+
+          			if (marker) { marker.setMap(null); }
+
+          			marker = new google.maps.Marker({
+            			position: event.latLng,
+            			map: map,
+            			title: 'Click to zoom'
+          			});
+
+        			$.getJSON('/get_data',
+           			 {
+            			lati: lat,
+            			long: lng},
+            			function(data){
+                			// var response = data.result;
+                			// alert(response);
+                			//alert(data)
+
+          				});
+        // $.getJSON("/get_data", {lat: 40.807419, lng: -73.959998}, function(json){
+        //   alert("JSON Data: " + json);
+        // });
+
+
+        			});
+
+        //return (lat, lng)
+
+      			}
+
+
+      //google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+    		</script>
+
+    		<script async defer
+    			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE5i-SzXCyvzvCzdTfdzFak9P2N54Lkys&callback=initMap">
+    		</script>
+
+	</body>
+</html>

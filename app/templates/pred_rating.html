@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Rating Bar</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../static/assets/css/main_bda.css" />
+		
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    
+	</head>
+	<body class="left-sidebar">
+
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="homepage" id="logo">Cooked to Location</a></h1>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li class="current"><a href="../homepage">Home</a></li>
+								<li><a href="../location">Location</a></li>
+								<li><a href="../cuisine">Cuisine</a></li>
+								<li><a href="../rating">Rating</a></li>
+								<li><a href="../contact">Contact</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<div class="row 200%">
+							<div class="4u 12u(mobile)" id="sidebar">
+								<hr class="first" />
+
+								<section>
+									<a class="image fit"><img src="../static/images/logo3.png" style="width: 100px;height: 100px" alt="" /></a>
+
+									<header>
+									<p></p>
+
+										<h3><a href="#">Customize Your Restaurant</a></h3>
+
+									</header>
+
+
+									<div>
+										<form action="/rating/predict" method='POST'>
+
+										<p>
+
+											Want to know the rating of your ideal restaurant? Customize your restaurant by single click. We tell you how successful your restaurant would be.
+
+										</p>
+
+										<p><strong>Cuisine Type</strong>
+
+											<input id='blue' type="text" style='color:white;' class="form-control" name="foodtype" value= {{foodtype}}>
+										</p>
+
+										<p><strong>Price Range</strong>
+											<input id='red' type="text" style='color:white;' class="form-control" name="price" value= {{price}}>
+										</p>
+
+										<p><strong>Delivery</strong>
+
+											<input id='yellow' type="text" style='color:white;' class="form-control" name="delivery" value= {{delivery}}>
+										</p>
+
+										<p><strong>Wi-Fi</strong>
+
+											<input id='green' type="text" style='color:white;' class="form-control" name="wifi" value= {{wifi}}>
+										</p>
+
+										<p><strong>Happy Hour</strong>
+
+											<input id='purple' type="text" style='color:white;' class="form-control" name="happyhour" value= {{happyhour}}>	
+										</p>
+
+
+										<p><strong>Waiter Service</strong>
+
+											<input id='darkblue' type="text" style='color:white;' class="form-control" name="service" value= {{service}}>
+										</p>
+
+										<p><strong>State</strong>
+
+											<input id='pur' type="text" style='color:white;' class="form-control" name="state" value= {{state}}>	
+										</p>
+
+
+										<p><strong>Zip Code</strong><input type="text" class="form-control" name={{zipcode}} placeholder={{zipcode}}>
+										</p>
+
+										<p></p>
+
+										</form>
+									</div>
+
+
+								</section>
+
+							</div>
+							<div class="8u 12u(mobile) important(mobile)" id="content">
+								<article id="main">
+									<header>
+										<h2><a href="#">Rating Prediction</a></h2>
+
+									</header>
+										<p></p>
+										<br></br>
+										<p></p>
+
+										<h3>Your Customized Restaurant Features</h3>
+										<p></p>
+										<i class="icon fa-cutlery"></i> &nbsp;{{foodtype}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<i class="icon fa-map-marker"></i>&nbsp;{{state}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<i class="icon fa-usd"></i>&nbsp;{{price}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+										<i class="icon fa-truck"></i> &nbsp;{{delivery}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<i class="icon fa-wifi"></i> &nbsp;{{wifi}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<i class="icon fa-beer"></i> &nbsp;{{happyhour}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<i class="icon fa-male"></i> &nbsp;{{service}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+										
+										<br></br>
+										<p></p>
+										<h3>Predicted Rating</h3>
+										<p>
+											<style>
+												div.card {
+												  width: 250px;
+												  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+												  text-align: center;
+												}
+
+												div.header {
+												    background-color: #4CAF50;
+												    color: white;
+												    padding: 10px;
+												    font-size: 40px;
+												}
+
+												div.container {
+												    padding: 10px;
+
+												}
+											</style>
+
+											<div class="card">
+											  <div class="header">
+											    <h1 style="color:white;">{{rating[0]}}</h1>
+											  </div>
+
+											  <div class="container">
+											    <p text-align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reach your expectation?</p>
+											  </div>
+											</div>
+
+										</p>
+
+										<object name="foo" type="text/html" data="/static/images/graph2.html" style="width: 80%;height: 400px">
+
+
+
+
+
+
+
+
+									
+									</section>
+								</article>
+							</div>
+						</div>
+						<hr />
+						
+					</div>
+
+				</div>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+
+								<!-- Contact -->
+									<section class="contact">
+										<ul class="icons">
+											<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+											<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+											<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+											<li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
+										</ul>
+									</section>
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; Big Data Analytics. All rights reserved.</li><li>Design: Jiayi Wang, Chenlu Ji, Sam Park. <a href="http://html5up.net">Github Link</a></li>
+										</ul>
+									</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="../static/assets/js/jquery.min.js"></script>
+			<script src="../static/assets/js/jquery.dropotron.min.js"></script>
+			<script src="../static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="../static/assets/js/jquery.onvisible.min.js"></script>
+			<script src="../static/assets/js/skel.min.js"></script>
+			<script src="../static/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../static/assets/js/main.js"></script>
+
+        	<script>
+      			function initMap() {
+
+        			var marker = null;
+        			var myLatlng = {lat: 40.807419, lng: -73.959998};
+        			var lat;
+        			var lng;
+
+        		// var SCRIPT_ROOT = {{ request.script_root }};
+
+					var map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 15,
+						disableDefaultUI: false,
+						center: myLatlng,
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+					});
+
+
+
+        		google.maps.event.addListener(map, "click", function(event) {
+          			lat = event.latLng.lat();
+          			lng = event.latLng.lng();
+          
+          			// alert("Lat=" + lat + "; Lng=" + lng);
+
+          			if (marker) { marker.setMap(null); }
+
+          			marker = new google.maps.Marker({
+            			position: event.latLng,
+            			map: map,
+            			title: 'Click to zoom'
+          			});
+
+        			$.getJSON('/get_data',
+           			 {
+            			lati: lat,
+            			long: lng},
+            			function(data){
+                			// var response = data.result;
+                			// alert(response);
+                			//alert(data)
+
+          				});
+        // $.getJSON("/get_data", {lat: 40.807419, lng: -73.959998}, function(json){
+        //   alert("JSON Data: " + json);
+        // });
+
+
+        			});
+
+        //return (lat, lng)
+
+      			}
+
+
+      //google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+    		</script>
+
+    		<script async defer
+    			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE5i-SzXCyvzvCzdTfdzFak9P2N54Lkys&callback=initMap">
+    		</script>
+
+	</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Cusine Bar</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../static/assets/css/main_bda.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    
+	</head>
+	<body class="left-sidebar">
+
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="homepage" id="logo">Cooked to Location</a></h1>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li class="current"><a href="homepage">Home</a></li>
+								<li><a href="location">Location</a></li>
+								<li><a href="cuisine">Cuisine</a></li>
+								<li><a href="rating">Rating</a></li>
+								<li><a href="contact">Contact</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<div class="row 200%">
+							<div class="4u 12u(mobile)" id="sidebar">
+								<hr class="first" />
+								<section>
+									<a class="image fit"><img src="../static/images/logo3.png" style="width: 100px;height: 100px" alt="" /></a>
+									<header>
+									<p></p>
+										<h3><a href="#">Enter your location</a></h3>
+									</header>
+									<p>
+
+										By typing in your preferred location for opening a restaurant (zip code, coordinates, or simply using your current location), we offer you the best choice of cuisine type and lead you the best chance to success.
+
+									</p>
+
+									<div class="jumbotron" style="height:100px;width:200px">
+										<form name='recommend' id='recommend' action="/cuisine/recommend" method='POST'>
+											<input type="text" class="form-control" name="zipcode" placeholder='Zip Code' value=''>
+											<input type="hidden" name="lat" value='empty'>
+											<input type="hidden" name="lng" value='empty'>
+											<p></p>
+											<input type="submit" value="Recommend" style="height:46px;width:180px;color:white">
+										</form>
+									</div>
+
+
+								</section>
+								<hr />
+
+							</div>
+							<div class="8u 12u(mobile) important(mobile)" id="content">
+								<article id="main">
+									<header>
+										<h2><a href="#">Cuisine Recommendation</a></h2>
+
+									</header>
+										<p>
+											Or just right click anywhere you want on the map, we do recommendation right after.
+										</p>
+
+									<div id="map" style="width: 100%;height: 500px"></div>
+
+								</article>
+							</div>
+						</div>
+
+
+					</div>
+
+				</div>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+
+								<!-- Contact -->
+									<section class="contact">
+										<ul class="icons">
+											<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+											<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+											<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+											<li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
+										</ul>
+									</section>
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; Big Data Analytics. All rights reserved.</li><li>Design: Jiayi Wang, Chenlu Ji, Sam Park. <a href="http://html5up.net">Github Link</a></li>
+										</ul>
+									</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="../static/assets/js/jquery.min.js"></script>
+			<script src="../static/assets/js/jquery.dropotron.min.js"></script>
+			<script src="../static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="../static/assets/js/jquery.onvisible.min.js"></script>
+			<script src="../static/assets/js/skel.min.js"></script>
+			<script src="../static/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../static/assets/js/main.js"></script>
+
+        	<script>
+      			function initMap() {
+
+        			var marker = null;
+        			var myLatlng = {lat: 40.807419, lng: -73.959998};
+        			var lat;
+        			var lng;
+
+        		// var SCRIPT_ROOT = {{ request.script_root }};
+
+					var map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 15,
+						disableDefaultUI: false,
+						center: myLatlng,
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+					});
+
+
+
+        		google.maps.event.addListener(map, "click", function(event) {
+          			lat = event.latLng.lat();
+          			lng = event.latLng.lng();
+          
+          			// alert("Lat=" + lat + "; Lng=" + lng);
+
+          			if (marker) { marker.setMap(null); }
+
+          			marker = new google.maps.Marker({
+            			position: event.latLng,
+            			map: map,
+            			title: 'Click to zoom'
+          			});
+
+          			document.recommend.lat.value=lat
+          			document.recommend.lng.value=lng
+
+
+        			//$.getJSON('/get_data',
+           			 //{
+            		//	lati: lat,
+            		//	long: lng},
+            		//	function(data){
+                			// var response = data.result;
+                			// alert(response);
+                			//alert(data)
+
+          			//	});
+        // $.getJSON("/get_data", {lat: 40.807419, lng: -73.959998}, function(json){
+        //   alert("JSON Data: " + json);
+        // });
+
+
+        			});
+
+        //return (lat, lng)
+
+      			}
+
+
+      //google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+    		</script>
+
+    		<script async defer
+    			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE5i-SzXCyvzvCzdTfdzFak9P2N54Lkys&callback=initMap">
+    		</script>
+
+	</body>
+</html>

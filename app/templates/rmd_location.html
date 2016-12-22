@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Cusine Bar</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../static/assets/css/main_bda.css" />
+		
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    
+	</head>
+	<body class="left-sidebar">
+
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="homepage" id="logo">Cooked to Location</a></h1>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li class="current"><a href="../homepage">Home</a></li>
+								<li><a href="../location">Location</a></li>
+								<li><a href="../cuisine">Cuisine</a></li>
+								<li><a href="../rating">Rating</a></li>
+								<li><a href="../contact">Contact</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<div class="row 200%">
+							<div class="4u 12u(mobile)" id="sidebar">
+								<hr class="first" />
+								<section>
+									<a class="image fit"><img src="../static/images/logo1.png" style="width: 100px;height: 100px" alt="" /></a>
+									<header>
+									<p></p>
+										<h3><a href="#">Choose Cuisine Type</a></h3>
+									</header>
+
+
+
+									<div>
+										<form action="/location/recommend2" method='POST'>
+
+										<p>
+
+
+											Want to know where is the best location to open a restaurant with specific cuisine type? We help you locate the best place for your own restaurant.
+
+										</p>
+
+										<input type="text" class="form-control" name="foodtype" placeholder={{foodtype}}>
+
+											<p></p>
+
+											<p>
+
+
+												You can also find best place for your restaurant within certain loaction range. Just type in Zip code. If you want recommendation nationwide, please leave this column blank.   
+
+											</p>
+
+											<input type="text" class="form-control" name="zipcode" placeholder={{zipcode}}>
+											<p></p>
+											<input type="submit" value="Recommend" style="height:46px;width:180px;color:white">
+										</form>
+									</div>
+
+
+								</section>
+								<hr />
+								<section>
+									<header>
+										<h3><a href="#">Popular {{foodtype}} Restaurants</a></h3>
+									</header>
+									<p>
+										Below are lists of most popular {{foodtype}} restaurants nationwide, telling you where all those successful restaurants locate.
+									</p>
+									<div class="row 50%">
+										<div class="4u">
+											<a href="#" class="image fit"><img src="../static/images/8.jpg" style="width: 100%;height: 150px" alt="" /></a>
+										</div>
+										<div class="8u">
+											<h4>{{rest_1_name}}</h4>
+
+											<p>
+											<a class="icon fa-home"> Address </a><br>{{rest_1_addr}}<br>
+											</p>
+
+											<p>
+
+											<a class="icon fa-star"> Rating: {{rest_1_rate}}</a>
+											</p>											
+										</div>
+									</div>
+									<div class="row 50%">
+										<div class="4u">
+											<a href="#" class="image fit"><img src="../static/images/9.jpg" alt="" /></a>
+										</div>
+										<div class="8u">
+											<h4>{{rest_2_name}}</h4>
+
+											<p>
+											<a class="icon fa-home"> Address </a><br>{{rest_2_addr}}<br>
+											</p>
+
+											<p>
+
+											<a class="icon fa-star"> Rating: {{rest_2_rate}}</a>
+											</p>
+										</div>
+									</div>
+									<div class="row 50%">
+										<div class="4u">
+											<a href="#" class="image fit"><img src="../static/images/10.jpg" alt="" /></a>
+										</div>
+										<div class="8u">
+											<h4>{{rest_3_name}}</h4>
+
+											<p>
+											<a class="icon fa-home"> Address </a><br>{{rest_3_addr}}<br>
+											</p>
+
+											<p>
+
+											<a class="icon fa-star"> Rating: {{rest_3_rate}}</a>
+											</p>
+										</div>
+									</div>
+									<div class="row 50%">
+										<div class="4u">
+											<a href="#" class="image fit"><img src="../static/images/11.jpg" alt="" /></a>
+										</div>
+										<div class="8u">
+											<h4>{{rest_4_name}}</h4>
+
+											<p>
+											<a class="icon fa-home"> Address </a><br>{{rest_4_addr}}<br>
+											</p>
+
+											<p>
+
+											<a class="icon fa-star"> Rating: {{rest_4_rate}}</a>
+											</p>
+										</div>
+									</div>
+									<div class="row 50% no-collapse">
+										<div class="4u">
+											<a href="#" class="image fit"><img src="../static/images/12.jpg" alt="" /></a>
+										</div>
+										<div class="8u">
+											<h4>{{rest_5_name}}</h4>
+
+											<p>
+											<a class="icon fa-home"> Address </a><br>{{rest_5_addr}}<br>
+											</p>
+
+											<p>
+
+											<a class="icon fa-star"> Rating: {{rest_5_rate}}</a>
+											</p>										</div>
+									</div>
+
+								</section>
+							</div>
+							<div class="8u 12u(mobile) important(mobile)" id="content">
+								<article id="main">
+									<header>
+										<h2><a href="#">Location Recommendation</a></h2>
+
+									</header>
+										<p>
+											Location of restaurants we recommend for you:
+										</p>
+										
+
+									<div id="map" style="width: 100%;height: 500px"></div>
+
+
+									<section>
+										<header>
+											<h3>Location We Recommend for {{foodtype}} Restaurant</h3>
+										</header>
+										<p>
+
+											
+											<a class="icon fa-home"> {{cor_1[2]}} &nbsp;</a>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+											<br>
+
+											<a class="icon fa-home"> {{cor_2[2]}} &nbsp;</a>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+											<br>
+
+											<a class="icon fa-home"> {{cor_3[2]}} &nbsp;</a>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+											<br>
+
+											<a class="icon fa-home"> {{cor_4[2]}} &nbsp;</a>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+											<br>
+
+											<a class="icon fa-home"> {{cor_5[2]}} &nbsp;</a>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+										</p>
+
+									</section>
+
+									<h3>Recommended Location(Zip Code) Average Rating</h3>
+
+									<img src={{hist}} align='right' alt="" / style="width: 110%;">
+
+
+								</article>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+
+								<!-- Contact -->
+									<section class="contact">
+										<ul class="icons">
+											<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+											<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+											<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+											<li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
+										</ul>
+									</section>
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; Big Data Analytics. All rights reserved.</li><li>Design: Jiayi Wang, Chenlu Ji, Sam Park. <a href="http://html5up.net">Github Link</a></li>
+										</ul>
+									</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="../static/assets/js/jquery.min.js"></script>
+			<script src="../static/assets/js/jquery.dropotron.min.js"></script>
+			<script src="../static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="../static/assets/js/jquery.onvisible.min.js"></script>
+			<script src="../static/assets/js/skel.min.js"></script>
+			<script src="../static/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../static/assets/js/main.js"></script>
+
+        	<script>
+      			function initMap() {
+
+        			var marker = null;
+        			var myLatlng = {lat: 40.163361, lng: -97.239998};
+        			var lat;
+        			var lng;
+
+        		// var SCRIPT_ROOT = {{ request.script_root }};
+
+					var map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 4,
+						disableDefaultUI: false,
+						center: myLatlng,
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+					});
+
+					setMarkers(map)
+				}
+
+
+
+      			var beaches = [
+        				['Bondi Beach', {{cor_1[0]}}, {{cor_1[1]}}, 4],
+        				['Coogee Beach', {{cor_2[0]}}, {{cor_2[1]}}, 5],
+        				['Cronulla Beach', {{cor_3[0]}}, {{cor_3[1]}}, 3],
+        				['Manly Beach', {{cor_4[0]}}, {{cor_4[1]}}, 2],
+        				['Maroubra Beach', {{cor_5[0]}}, {{cor_5[1]}}, 1]
+      			];
+
+      			function setMarkers(map) {
+        			var image = {
+          				url: '../static/images/logo_icon.png',
+          				// This marker is 20 pixels wide by 32 pixels high.
+          				size: new google.maps.Size(40, 40),
+          				// The origin for this image is (0, 0).
+          				origin: new google.maps.Point(0, 0),
+			          // The anchor for this image is the base of the flagpole at (0, 32).
+			            anchor: new google.maps.Point(0, 32)
+			        };
+			        // Shapes define the clickable region of the icon. The type defines an HTML
+			        // <area> element 'poly' which traces out a polygon as a series of X,Y points.
+			        // The final coordinate closes the poly by connecting to the first coordinate.
+			        var shape = {
+			          coords: [1, 1, 1, 20, 18, 20, 18, 1],
+			          type: 'poly'
+			        };
+
+			        for (var i = 0; i < beaches.length; i++) {
+			          var beach = beaches[i];
+			          var marker = new google.maps.Marker({
+			            position: {lat: beach[1], lng: beach[2]},
+			            map: map,
+			            icon: image,
+			            shape: shape,
+			            title: beach[0],
+			            zIndex: beach[3]
+			          });
+			        }
+			      }
+
+    		</script>
+    		<script async defer
+    			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE5i-SzXCyvzvCzdTfdzFak9P2N54Lkys&callback=initMap">
+    		</script>
+
+	</body>
+</html>

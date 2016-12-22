@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Cusine Bar</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../static/assets/css/main_bda.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    
+	</head>
+	<body class="left-sidebar">
+
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="homepage" id="logo">Cooked to Location</a></h1>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li class="current"><a href="../homepage">Home</a></li>
+								<li><a href="../location">Location</a></li>
+								<li><a href="../cuisine">Cuisine</a></li>
+								<li><a href="../rating">Rating</a></li>
+								<li><a href="../contact">Contact</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<div class="row 200%">
+							<div class="4u 12u(mobile)" id="sidebar">
+								<hr class="first" />
+								<section>
+									<a class="image fit"><img src="../static/images/logo3.png" style="width: 100px;height: 100px" alt="" /></a>
+									<header>
+									<p></p>
+										<h3><a href="#">Enter your location</a></h3>
+									</header>
+
+
+
+									<p>
+
+
+
+
+										By typing in your preferred location for opening a restaurant (zip code, coordinates, or simply using your current location), we offer you the best choice of cuisine type and lead you the best chance to success.
+
+									</p>
+
+									<div class="jumbotron" style="height:100px;width:200px">
+										<form action="/cuisine/recommend" method='POST'>
+											<input type="text" class="form-control" name="zipcode" placeholder={{zipcode}}>
+											<p></p>
+											<input type="submit" value="Recommend" style="height:46px;width:180px;color:white">
+										</form>
+									</div>
+
+								</section>
+								<hr />
+								<section>
+									<header>
+										<h3><a href="#">Popular Restaurants Nearby</a></h3>
+									</header>
+									<p>
+										Below are lists of most popular restaurants with basic information, offering you an overall sense about what kind of restaurants would success given certain location.
+									</p>
+
+									<div class="row 50%">
+										<div class="4u">
+											<a href="#" class="image fit"><img src="../static/images/7.jpg" style="width: 100%;height: 150px" alt="" /></a>
+										</div>
+										<div class="8u">
+											<h4>{{rest_1_name}}</h4>
+
+											<p>
+											<a class="icon fa-home"> Address </a><br>{{rest_1_addr}}<br>
+											</p>
+
+											<p>
+
+											<a class="icon fa-star"> Rating: {{rest_1_rate}}</a>
+											</p>											
+										</div>
+									</div>
+									<div class="row 50%">
+										<div class="4u">
+											<a href="#" class="image fit"><img src="../static/images/2.jpg" alt="" /></a>
+										</div>
+										<div class="8u">
+											<h4>{{rest_2_name}}</h4>
+
+											<p>
+											<a class="icon fa-home"> Address </a><br>{{rest_2_addr}}<br>
+											</p>
+
+											<p>
+
+											<a class="icon fa-star"> Rating: {{rest_2_rate}}</a>
+											</p>
+										</div>
+									</div>
+									<div class="row 50%">
+										<div class="4u">
+											<a href="#" class="image fit"><img src="../static/images/3.jpg" alt="" /></a>
+										</div>
+										<div class="8u">
+											<h4>{{rest_3_name}}</h4>
+
+											<p>
+											<a class="icon fa-home"> Address </a><br>{{rest_3_addr}}<br>
+											</p>
+
+											<p>
+
+											<a class="icon fa-star"> Rating: {{rest_3_rate}}</a>
+											</p>
+										</div>
+									</div>
+									<div class="row 50%">
+										<div class="4u">
+											<a href="#" class="image fit"><img src="../static/images/4.jpg" alt="" /></a>
+										</div>
+										<div class="8u">
+											<h4>{{rest_4_name}}</h4>
+
+											<p>
+											<a class="icon fa-home"> Address </a><br>{{rest_4_addr}}<br>
+											</p>
+
+											<p>
+
+											<a class="icon fa-star"> Rating: {{rest_4_rate}}</a>
+											</p>
+										</div>
+									</div>
+									<div class="row 50% no-collapse">
+										<div class="4u">
+											<a href="#" class="image fit"><img src="../static/images/5.jpg" alt="" /></a>
+										</div>
+										<div class="8u">
+											<h4>{{rest_5_name}}</h4>
+
+											<p>
+											<a class="icon fa-home"> Address </a><br>{{rest_5_addr}}<br>
+											</p>
+
+											<p>
+
+											<a class="icon fa-star"> Rating: {{rest_5_rate}}</a>
+											</p>										</div>
+									</div>
+								</section>
+							</div>
+							<div class="8u 12u(mobile) important(mobile)" id="content">
+								<article id="main">
+									<header>
+										<h2><a href="#">Cuisine Recommendation</a></h2>
+
+									</header>
+										<p>
+											Location of popular restaurants nearby
+										</p>
+									<div id="map" style="width: 100%;height: 500px"></div>
+
+
+
+									<section>
+									  <!--for demo wrap-->
+									  <h3>Cuisine Type Recommendation Table</h3>
+									  <p></p>
+
+									  <div class="16u 12u(mobile) important(mobile)">
+									    <table >
+									      
+											<tr>
+									          <th> </th>
+									          <th>Cuisine Type</th>
+									          <th>Recommended Level</th>
+									        </tr>
+									        <tr>
+									          <td style="text-align:center;"><i class="fa fa-cutlery"></i></td>
+									          <td style="text-align:center;">{{food_1}}</td>
+									          <td style="text-align:center;">
+									          	<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+									          </td>
+									        </tr>
+									        <tr>
+									          <td style="text-align:center;"><i class="fa fa-cutlery"></td>
+									          <td style="text-align:center;">{{food_2}}</td>
+									          <td style="text-align:center;">
+									          	<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+									          </td>
+									        <tr>
+									          <td style="text-align:center;"><i class="fa fa-cutlery"></td>
+									          <td style="text-align:center;">{{food_3}}</td>
+									          <td style="text-align:center;">
+									          	<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>						      
+									          </td>
+									        </tr>
+									        <tr>
+									          <td style="text-align:center;"><i class="fa fa-cutlery"></td>
+									          <td style="text-align:center;">{{food_4}}</td>
+									          <td style="text-align:center;">
+									          	<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+												<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+									          </td>
+									        </tr>
+									        <tr>
+									          <td style="text-align:center;"><i class="fa fa-cutlery"></td>
+									          <td style="text-align:center;">{{food_5}}</td>
+									          <td style="text-align:center;">
+									          	<i class="icon fa-star" style='font-size:0.7em;color:#C94E3C'></i>
+									          </td>
+									        </tr>							        									        					
+									      
+									    </table>
+									  </div>
+									</section>
+
+									<h3>Recommended Cuisine Type Average Rating</h3>
+
+									<img src={{hist}} align='right' alt="" / style="width: 110%;">
+								</article>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+
+								<!-- Contact -->
+									<section class="contact">
+										<ul class="icons">
+											<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+											<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+											<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+											<li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
+										</ul>
+									</section>
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; Big Data Analytics. All rights reserved.</li><li>Design: Jiayi Wang, Chenlu Ji, Sam Park. <a href="http://html5up.net">Github Link</a></li>
+										</ul>
+									</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="../static/assets/js/jquery.min.js"></script>
+			<script src="../static/assets/js/jquery.dropotron.min.js"></script>
+			<script src="../static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="../static/assets/js/jquery.onvisible.min.js"></script>
+			<script src="../static/assets/js/skel.min.js"></script>
+			<script src="../static/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../static/assets/js/main.js"></script>
+
+        	<script>
+      			function initMap() {
+
+        			var marker = null;
+        			var myLatlng = {lat: {{rest_1_lat}}, lng: {{rest_1_lng}}};
+        			var lat;
+        			var lng;
+
+        		// var SCRIPT_ROOT = {{ request.script_root }};
+
+					var map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 9,
+						disableDefaultUI: false,
+						center: myLatlng,
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+					});
+
+					setMarkers(map)
+				}
+
+
+
+      			var beaches = [
+        				['Bondi Beach', {{rest_1_lat}}, {{rest_1_lng}}, 4],
+        				['Coogee Beach', {{rest_2_lat}}, {{rest_2_lng}}, 5],
+        				['Cronulla Beach', {{rest_3_lat}}, {{rest_3_lng}}, 3],
+        				['Manly Beach', {{rest_4_lat}}, {{rest_4_lng}}, 2],
+        				['Maroubra Beach', {{rest_5_lat}}, {{rest_5_lng}}, 1]
+      			];
+
+      			function setMarkers(map) {
+        			var image = {
+          				url: '../static/images/Hamburger-35.png',
+          				// This marker is 20 pixels wide by 32 pixels high.
+          				size: new google.maps.Size(30, 30),
+          				// The origin for this image is (0, 0).
+          				origin: new google.maps.Point(0, 0),
+			          // The anchor for this image is the base of the flagpole at (0, 32).
+			            anchor: new google.maps.Point(0, 32)
+			        };
+			        // Shapes define the clickable region of the icon. The type defines an HTML
+			        // <area> element 'poly' which traces out a polygon as a series of X,Y points.
+			        // The final coordinate closes the poly by connecting to the first coordinate.
+			        var shape = {
+			          coords: [1, 1, 1, 20, 18, 20, 18, 1],
+			          type: 'poly'
+			        };
+
+			        for (var i = 0; i < beaches.length; i++) {
+			          var beach = beaches[i];
+			          var marker = new google.maps.Marker({
+			            position: {lat: beach[1], lng: beach[2]},
+			            map: map,
+			            icon: image,
+			            shape: shape,
+			            title: beach[0],
+			            zIndex: beach[3]
+			          });
+			        }
+			      }
+
+    		</script>
+
+    		<script async defer
+    			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE5i-SzXCyvzvCzdTfdzFak9P2N54Lkys&callback=initMap">
+    		</script>
+
+	</body>
+</html>
