@@ -15,6 +15,6 @@ In this project, we aim to do three things. Firstly, predict the location of a r
 7. In terminal, cd to the app folder. Run path_to_your_pyspark/bin/spark-submit app.py
 8. If everything runs correctly, open the address 127.0.0.1:5000/homepage in a browser. You will see the following welcome page. Enjoy.
 
-<p><center><img src="figs/preview.png" width=450 height=300 ></center></p>
+<p><center><img src="figs/preview.png" width=600 height=350 ></center></p>
 
 
