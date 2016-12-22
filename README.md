@@ -9,4 +9,12 @@ In this project, we aim to do three things. Firstly, predict the location of a r
 1. Download the whole package locally.
 2. Install the dependencies: Hadoop, PySpark, Python 3.5.
 3. Download the dataset (business.json and review.json) at https://www.yelp.com/dataset_challenge
+4. Run the files in clean data folder to create csvs that are needed to create the database.
+5. Run yelpDB.py in the app folder to create the database. You may need to change the path to csv files and call the right function to create the database.
+6. Run Hadoop locally and make sure hdfs works normal. Create a directory user/admin in hdfs.
+7. In terminal, cd to the app folder. Run path_to_your_pyspark/bin/spark-submit app.py
+8. If everything runs correctly, open the address 127.0.0.1:5000/homepage in a browser. You will see the following welcome page. Enjoy.
+
+<p><center><img src="figs/preview.png" width=450 height=300 ></center></p>
+
 
