@@ -7,4 +7,6 @@ In this project, we aim to do three things. Firstly, predict the location of a r
 # How to use this Package
 
 1. Download the whole package locally.
-2. 
+2. Install the dependencies: Hadoop, PySpark, Python 3.5.
+3. Download the dataset (business.json and review.json) at https://www.yelp.com/dataset_challenge
+
