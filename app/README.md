@@ -1,6 +1,6 @@
 # Cooked_To_Location
 
-<p><center><img src="figs/preview.png" width=600 height=350 ></center></p>
+<p><center><img src="../figs/preview.png" width=600 height=350 ></center></p>
 This project is created by Chenlu Ji, Jiayi Wang and Sam Park for Big Data Analytics, Columbia University. 
 
 Instructor: Prof. Ching-Yung Lin
